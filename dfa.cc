@@ -132,15 +132,6 @@ std::ostream& operator<<(std::ostream& out, const DFA<T>& dfa) {
 }
 
 int main() {
-    std::map<std::pair<size_t, char>, size_t> transitions1 = {
-        {{0, 'a'}, 2},
-        {{0, 'b'}, 1},
-        {{1, 'a'}, 2},
-        {{1, 'b'}, 1},
-        {{2, 'a'}, 2},
-        {{2, 'b'}, 2}
-    };
-
     // DFA where a's must precede b's
     DFA dfa1 = DFA<size_t>( 
         std::set<size_t>{0, 1, 2},
