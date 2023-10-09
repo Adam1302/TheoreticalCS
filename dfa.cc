@@ -104,6 +104,15 @@ public:
         } 
     }
 
+    void complement() {
+        std::set<T> nonFinalStates;
+        for (T state : states) {
+            if (!finalStates.contains(state))
+                nonFinalStates.insert(state);
+        }
+        finalStates = nonFinalStates;
+    }
+
     template <typename U>
     friend std::ostream& operator<<(std::ostream& out, const DFA<U>& dfa);
 };
@@ -196,5 +205,14 @@ int main() {
     // dfa2.minimizeDFA();
     dfa3.minimizeDFA();
 
-    std::cout << dfa3 << "\n";
+    // std::cout << dfa3 << "\n";
+
+    std::cout << dfa1 << "\n";
+    DFA dfa4 = dfa1;
+    dfa4.complement();
+    assert(!dfa4.accepts(""));
+    assert(!dfa4.accepts("aabbb"));
+    assert(!dfa4.accepts("ab"));
+    assert(dfa4.accepts("ba"));
+    assert(dfa4.accepts("aabbab"));
 }

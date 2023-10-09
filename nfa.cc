@@ -8,9 +8,8 @@
 #include <iostream>
 #include <map>
 #include <set>
-#include <unordered_map>
 
-// T: type of states
+// we use ASCII 0 (NULL) as out EPSILON value
 template <typename T>
 class NFA {
     std::set<T> states;
