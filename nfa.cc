@@ -31,17 +31,19 @@ public:
     bool accepts(std::string s) {
         std::set<T> currentStates;
         std::set<T> nextStates;
+        bool transitionSeen;
         currentStates.insert(initialState);
         
         for (char c : s) {
+            transitionSeen = false;
             for (T currentState : currentStates) {
                 if (transitions.contains({currentState, c})) {
+                    transitionSeen = true;
                     for (T nextState : transitions[{currentState, c}])
                         nextStates.insert(nextState);
-                } else {
-                    return false;
                 }
             }
+            if (!transitionSeen) return false;
             currentStates = nextStates;
             nextStates.clear();
         }
