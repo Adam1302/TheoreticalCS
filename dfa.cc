@@ -201,11 +201,9 @@ int main() {
 
     std::cout << dfa3 << "\n";
 
-    // dfa1.minimizeDFA();
-    // dfa2.minimizeDFA();
+    dfa1.minimizeDFA();
+    dfa2.minimizeDFA();
     dfa3.minimizeDFA();
-
-    // std::cout << dfa3 << "\n";
 
     std::cout << dfa1 << "\n";
     DFA dfa4 = dfa1;
